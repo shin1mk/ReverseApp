@@ -1,0 +1,6 @@
+framework module Pods_ReverseApp {
+  umbrella header "Pods-ReverseApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

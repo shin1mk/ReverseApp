@@ -9,14 +9,21 @@
 /* Begin PBXBuildFile section */
 		13035C492A35B5FC003A98BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C482A35B5FC003A98BC /* AppDelegate.swift */; };
 		13035C4B2A35B5FC003A98BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C4A2A35B5FC003A98BC /* SceneDelegate.swift */; };
-		13035C4D2A35B5FC003A98BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C4C2A35B5FC003A98BC /* ViewController.swift */; };
-		13035C502A35B5FC003A98BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13035C4E2A35B5FC003A98BC /* Main.storyboard */; };
+		13035C4D2A35B5FC003A98BC /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C4C2A35B5FC003A98BC /* MainController.swift */; };
 		13035C532A35B5FC003A98BC /* ReverseApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13035C512A35B5FC003A98BC /* ReverseApp.xcdatamodeld */; };
 		13035C552A35B5FD003A98BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13035C542A35B5FD003A98BC /* Assets.xcassets */; };
-		13035C582A35B5FD003A98BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13035C562A35B5FD003A98BC /* LaunchScreen.storyboard */; };
 		13035C632A35B5FD003A98BC /* ReverseAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C622A35B5FD003A98BC /* ReverseAppTests.swift */; };
 		13035C6D2A35B5FD003A98BC /* ReverseAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C6C2A35B5FD003A98BC /* ReverseAppUITests.swift */; };
 		13035C6F2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C6E2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift */; };
+		13035C7F2A35BC60003A98BC /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */; };
+		13035C812A35BC80003A98BC /* ReverseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C802A35BC80003A98BC /* ReverseManager.swift */; };
+		13CA3DA12A35BF4D009CC053 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3D9F2A35BF4D009CC053 /* Roboto-Bold.ttf */; };
+		13CA3DA22A35BF4D009CC053 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3DA02A35BF4D009CC053 /* Roboto-Regular.ttf */; };
+		13CA3DA52A35BF63009CC053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3DA32A35BF63009CC053 /* Main.storyboard */; };
+		13CA3DA62A35BF63009CC053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3DA42A35BF63009CC053 /* LaunchScreen.storyboard */; };
+		147EEBE5BF4A239795709312 /* Pods_ReverseAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27B9D79C1A79670314E202E /* Pods_ReverseAppTests.framework */; };
+		2989E5E1C59E2E1998A8AC79 /* Pods_ReverseApp_ReverseAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6FC691523FD92061324093 /* Pods_ReverseApp_ReverseAppUITests.framework */; };
+		DC82078DF60A9827FF713FF8 /* Pods_ReverseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DE44FF7B1EB8E541B6F456 /* Pods_ReverseApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,17 +47,30 @@
 		13035C452A35B5FC003A98BC /* ReverseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReverseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13035C482A35B5FC003A98BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13035C4A2A35B5FC003A98BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		13035C4C2A35B5FC003A98BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		13035C4F2A35B5FC003A98BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		13035C4C2A35B5FC003A98BC /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		13035C522A35B5FC003A98BC /* ReverseApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReverseApp.xcdatamodel; sourceTree = "<group>"; };
 		13035C542A35B5FD003A98BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		13035C572A35B5FD003A98BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13035C592A35B5FD003A98BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13035C5E2A35B5FD003A98BC /* ReverseAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReverseAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13035C622A35B5FD003A98BC /* ReverseAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAppTests.swift; sourceTree = "<group>"; };
 		13035C682A35B5FD003A98BC /* ReverseAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReverseAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13035C6C2A35B5FD003A98BC /* ReverseAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAppUITests.swift; sourceTree = "<group>"; };
 		13035C6E2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
+		13035C802A35BC80003A98BC /* ReverseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseManager.swift; sourceTree = "<group>"; };
+		13CA3D9F2A35BF4D009CC053 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		13CA3DA02A35BF4D009CC053 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		13CA3DA32A35BF63009CC053 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		13CA3DA42A35BF63009CC053 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32DE44FF7B1EB8E541B6F456 /* Pods_ReverseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReverseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46F89EC138BF898F9066854F /* Pods-ReverseApp-ReverseAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReverseApp-ReverseAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ReverseApp-ReverseAppUITests/Pods-ReverseApp-ReverseAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8D6FC691523FD92061324093 /* Pods_ReverseApp_ReverseAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReverseApp_ReverseAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A16267270EF17A546198B940 /* Pods-ReverseApp-ReverseAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReverseApp-ReverseAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-ReverseApp-ReverseAppUITests/Pods-ReverseApp-ReverseAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD569A6E92B95E6967752D14 /* Pods-ReverseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReverseApp.release.xcconfig"; path = "Target Support Files/Pods-ReverseApp/Pods-ReverseApp.release.xcconfig"; sourceTree = "<group>"; };
+		D27B9D79C1A79670314E202E /* Pods_ReverseAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReverseAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D998747A37ACEFC6AA3FA39E /* Pods-ReverseAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReverseAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ReverseAppTests/Pods-ReverseAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8F7184D6E3CA970BF92C393 /* Pods-ReverseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReverseApp.debug.xcconfig"; path = "Target Support Files/Pods-ReverseApp/Pods-ReverseApp.debug.xcconfig"; sourceTree = "<group>"; };
+		EF1036F5DADD7E703A534CF5 /* Pods-ReverseAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReverseAppTests.release.xcconfig"; path = "Target Support Files/Pods-ReverseAppTests/Pods-ReverseAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC82078DF60A9827FF713FF8 /* Pods_ReverseApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				147EEBE5BF4A239795709312 /* Pods_ReverseAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +94,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2989E5E1C59E2E1998A8AC79 /* Pods_ReverseApp_ReverseAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02FE84071AA847500E182E6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8F7184D6E3CA970BF92C393 /* Pods-ReverseApp.debug.xcconfig */,
+				AD569A6E92B95E6967752D14 /* Pods-ReverseApp.release.xcconfig */,
+				A16267270EF17A546198B940 /* Pods-ReverseApp-ReverseAppUITests.debug.xcconfig */,
+				46F89EC138BF898F9066854F /* Pods-ReverseApp-ReverseAppUITests.release.xcconfig */,
+				D998747A37ACEFC6AA3FA39E /* Pods-ReverseAppTests.debug.xcconfig */,
+				EF1036F5DADD7E703A534CF5 /* Pods-ReverseAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		13035C3C2A35B5FC003A98BC = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +121,8 @@
 				13035C612A35B5FD003A98BC /* ReverseAppTests */,
 				13035C6B2A35B5FD003A98BC /* ReverseAppUITests */,
 				13035C462A35B5FC003A98BC /* Products */,
+				02FE84071AA847500E182E6C /* Pods */,
+				2D42EEDA4D585258EE0B019C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +139,10 @@
 		13035C472A35B5FC003A98BC /* ReverseApp */ = {
 			isa = PBXGroup;
 			children = (
-				13035C482A35B5FC003A98BC /* AppDelegate.swift */,
-				13035C4A2A35B5FC003A98BC /* SceneDelegate.swift */,
-				13035C4C2A35B5FC003A98BC /* ViewController.swift */,
-				13035C4E2A35B5FC003A98BC /* Main.storyboard */,
-				13035C542A35B5FD003A98BC /* Assets.xcassets */,
-				13035C562A35B5FD003A98BC /* LaunchScreen.storyboard */,
-				13035C592A35B5FD003A98BC /* Info.plist */,
-				13035C512A35B5FC003A98BC /* ReverseApp.xcdatamodeld */,
+				13035C832A35BCBD003A98BC /* Resources */,
+				13035C822A35BC9D003A98BC /* Main */,
+				13035C7C2A35BC30003A98BC /* Core */,
+				13035C7B2A35BBF1003A98BC /* Application */,
 			);
 			path = ReverseApp;
 			sourceTree = "<group>";
@@ -130,6 +164,72 @@
 			path = ReverseAppUITests;
 			sourceTree = "<group>";
 		};
+		13035C7B2A35BBF1003A98BC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				13035C4A2A35B5FC003A98BC /* SceneDelegate.swift */,
+				13035C482A35B5FC003A98BC /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		13035C7C2A35BC30003A98BC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				13035C7D2A35BC3F003A98BC /* Extensions */,
+				13035C802A35BC80003A98BC /* ReverseManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		13035C7D2A35BC3F003A98BC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		13035C822A35BC9D003A98BC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				13035C4C2A35B5FC003A98BC /* MainController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		13035C832A35BCBD003A98BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				13CA3DA42A35BF63009CC053 /* LaunchScreen.storyboard */,
+				13CA3DA32A35BF63009CC053 /* Main.storyboard */,
+				13B4E1012A35BD78004D3399 /* Fonts */,
+				13035C512A35B5FC003A98BC /* ReverseApp.xcdatamodeld */,
+				13035C592A35B5FD003A98BC /* Info.plist */,
+				13035C542A35B5FD003A98BC /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		13B4E1012A35BD78004D3399 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				13CA3D9F2A35BF4D009CC053 /* Roboto-Bold.ttf */,
+				13CA3DA02A35BF4D009CC053 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2D42EEDA4D585258EE0B019C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32DE44FF7B1EB8E541B6F456 /* Pods_ReverseApp.framework */,
+				8D6FC691523FD92061324093 /* Pods_ReverseApp_ReverseAppUITests.framework */,
+				D27B9D79C1A79670314E202E /* Pods_ReverseAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13035C722A35B5FD003A98BC /* Build configuration list for PBXNativeTarget "ReverseApp" */;
 			buildPhases = (
+				A01B9D2C22F9215F76C190E2 /* [CP] Check Pods Manifest.lock */,
 				13035C412A35B5FC003A98BC /* Sources */,
 				13035C422A35B5FC003A98BC /* Frameworks */,
 				13035C432A35B5FC003A98BC /* Resources */,
+				C6879FCB1DB2BF793D89E2D6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +256,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13035C752A35B5FD003A98BC /* Build configuration list for PBXNativeTarget "ReverseAppTests" */;
 			buildPhases = (
+				DA4D24EB796A5C8C268A22D5 /* [CP] Check Pods Manifest.lock */,
 				13035C5A2A35B5FD003A98BC /* Sources */,
 				13035C5B2A35B5FD003A98BC /* Frameworks */,
 				13035C5C2A35B5FD003A98BC /* Resources */,
@@ -172,9 +275,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13035C782A35B5FD003A98BC /* Build configuration list for PBXNativeTarget "ReverseAppUITests" */;
 			buildPhases = (
+				ADB92C62681B227BFB11F94D /* [CP] Check Pods Manifest.lock */,
 				13035C642A35B5FD003A98BC /* Sources */,
 				13035C652A35B5FD003A98BC /* Frameworks */,
 				13035C662A35B5FD003A98BC /* Resources */,
+				820492A3684F74D0192FDD6E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,9 +339,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13035C582A35B5FD003A98BC /* LaunchScreen.storyboard in Resources */,
+				13CA3DA22A35BF4D009CC053 /* Roboto-Regular.ttf in Resources */,
+				13CA3DA12A35BF4D009CC053 /* Roboto-Bold.ttf in Resources */,
 				13035C552A35B5FD003A98BC /* Assets.xcassets in Resources */,
-				13035C502A35B5FC003A98BC /* Main.storyboard in Resources */,
+				13CA3DA62A35BF63009CC053 /* LaunchScreen.storyboard in Resources */,
+				13CA3DA52A35BF63009CC053 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,14 +363,119 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		820492A3684F74D0192FDD6E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReverseApp-ReverseAppUITests/Pods-ReverseApp-ReverseAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReverseApp-ReverseAppUITests/Pods-ReverseApp-ReverseAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReverseApp-ReverseAppUITests/Pods-ReverseApp-ReverseAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A01B9D2C22F9215F76C190E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReverseApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADB92C62681B227BFB11F94D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReverseApp-ReverseAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6879FCB1DB2BF793D89E2D6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReverseApp/Pods-ReverseApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReverseApp/Pods-ReverseApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReverseApp/Pods-ReverseApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA4D24EB796A5C8C268A22D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReverseAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		13035C412A35B5FC003A98BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				13035C532A35B5FC003A98BC /* ReverseApp.xcdatamodeld in Sources */,
-				13035C4D2A35B5FC003A98BC /* ViewController.swift in Sources */,
+				13035C7F2A35BC60003A98BC /* UIFont+CustomFonts.swift in Sources */,
+				13035C4D2A35B5FC003A98BC /* MainController.swift in Sources */,
 				13035C492A35B5FC003A98BC /* AppDelegate.swift in Sources */,
+				13035C812A35BC80003A98BC /* ReverseManager.swift in Sources */,
 				13035C4B2A35B5FC003A98BC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,25 +511,6 @@
 			targetProxy = 13035C692A35B5FD003A98BC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		13035C4E2A35B5FC003A98BC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13035C4F2A35B5FC003A98BC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		13035C562A35B5FD003A98BC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13035C572A35B5FD003A98BC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		13035C702A35B5FD003A98BC /* Debug */ = {
@@ -436,18 +629,20 @@
 		};
 		13035C732A35B5FD003A98BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8F7184D6E3CA970BF92C393 /* Pods-ReverseApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ReverseApp/Info.plist;
+				INFOPLIST_FILE = ReverseApp/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,26 +650,31 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = code.ReverseApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		13035C742A35B5FD003A98BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD569A6E92B95E6967752D14 /* Pods-ReverseApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ReverseApp/Info.plist;
+				INFOPLIST_FILE = ReverseApp/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -482,14 +682,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = code.ReverseApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		13035C762A35B5FD003A98BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D998747A37ACEFC6AA3FA39E /* Pods-ReverseAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -509,6 +713,7 @@
 		};
 		13035C772A35B5FD003A98BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF1036F5DADD7E703A534CF5 /* Pods-ReverseAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -528,6 +733,7 @@
 		};
 		13035C792A35B5FD003A98BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A16267270EF17A546198B940 /* Pods-ReverseApp-ReverseAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -545,6 +751,7 @@
 		};
 		13035C7A2A35B5FD003A98BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F89EC138BF898F9066854F /* Pods-ReverseApp-ReverseAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
