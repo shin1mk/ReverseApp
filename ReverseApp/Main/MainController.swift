@@ -1,6 +1,6 @@
 //
 //  MainController.swift
-//  Task1
+//  ReverseApp
 //
 //  Created by SHIN MIKHAIL on 24.05.2023.
 
@@ -8,8 +8,8 @@ import SnapKit
 import UIKit
 
 final class MainController: UIViewController {
-    //MARK: - Private UI Elements
-    private let titleLabel: UILabel = {
+    //MARK: - Private UI Elements - deleted all PRIVATE
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Reverse words"
         label.font = UIFont.customFontBold(ofSize: 34)
@@ -17,7 +17,7 @@ final class MainController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    private let subtitleLabel: UILabel = {
+    let subtitleLabel: UILabel = {
         let subtitle = UILabel()
         subtitle.text = "This application will reverse your words.\nPlease type text below"
         subtitle.textColor = Colors.gray
@@ -26,7 +26,7 @@ final class MainController: UIViewController {
         subtitle.numberOfLines = 3
         return subtitle
     }()
-    private let inputTextField: UITextField = {
+    let inputTextField: UITextField = {
         let input = UITextField()
         input.borderStyle = .none
         input.font = UIFont.customFontRegular(ofSize: 17)
@@ -43,20 +43,21 @@ final class MainController: UIViewController {
         input.attributedPlaceholder = attributedPlaceholder
         return input
     }()
-    private let lineView: UIView = {
+    let lineView: UIView = {
         let line = UIView()
         line.backgroundColor = Colors.lightGray
         return line
     }()
-    private let resultLabel: UILabel = {
+    let resultLabel: UILabel = {
         let result = UILabel()
         result.textColor = Colors.systemBlue
         result.textAlignment = .left
         result.font = UIFont.customFontRegular(ofSize: 24)
         result.numberOfLines = 0
+        result.accessibilityIdentifier = "resultLabel" // add id
         return result
     }()
-    private let reverseButton: UIButton = {
+    let reverseButton: UIButton = {
         let button = UIButton()
         button.setTitle("Reverse", for: .normal)
         button.setTitleColor(Colors.white, for: .normal)
@@ -64,11 +65,13 @@ final class MainController: UIViewController {
         button.layer.cornerRadius = 10
         button.isEnabled = false
         button.backgroundColor = Colors.lightSystemBlue
+        button.accessibilityIdentifier = "ReverseButton"
+
         return button
     }()
-    private let reverseManager: ReverseManager? = ReverseManager()
-    private var buttonBottomConstraint: Constraint?
-    private var appState: AppState = .empty {
+    let reverseManager: ReverseManager? = ReverseManager()
+    var buttonBottomConstraint: Constraint?
+    var appState: AppState = .empty {
         didSet {
             updateUI(for: appState)
         }
@@ -137,7 +140,7 @@ final class MainController: UIViewController {
             make.height.equalTo(Constants.ReverseButton.height)
         }
     }
-
+    
     func updateUI(for appState: AppState) {
         func applyEmptyState() {
             reverseButton.setTitle("Reverse", for: .normal)
@@ -259,8 +262,7 @@ extension MainController: UITextFieldDelegate {
                    replacementString string: String) -> Bool {
         if let text = textField.text,
            let textRange = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: textRange,
-                                                       with: string)
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
             appState = .input(text: updatedText)
         }
         return true
@@ -300,3 +302,17 @@ extension MainController {
 }
 
 
+extension MainController.AppState: Equatable {
+    static func ==(lhs: MainController.AppState, rhs: MainController.AppState) -> Bool {
+        switch (lhs, rhs) {
+        case (.empty, .empty):
+            return true
+        case let (.input(text1), .input(text2)):
+            return text1 == text2
+        case let (.reversed(result1), .reversed(result2)):
+            return result1 == result2
+        default:
+            return false
+        }
+    }
+}

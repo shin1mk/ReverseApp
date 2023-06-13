@@ -1,5 +1,4 @@
 //
-//  ReverseAppTests.swift
 //  ReverseAppTests
 //
 //  Created by SHIN MIKHAIL on 11.06.2023.
@@ -8,29 +7,57 @@
 import XCTest
 @testable import ReverseApp
 
-final class ReverseAppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class MainControllerTests: XCTestCase {
+    
+    var mainController: MainController!
+    
+    override func setUp() {
+        super.setUp()
+        mainController = MainController()
+        _ = mainController.view
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        mainController = nil
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testInputState() {
+        mainController.appState = .input(text: "Hello")
+        XCTAssertEqual(mainController.reverseButton.currentTitle, "Reverse")
+        XCTAssertTrue(mainController.reverseButton.isEnabled)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testReversedState() {
+        mainController.appState = .reversed(result: "olleH")
+        XCTAssertEqual(mainController.reverseButton.currentTitle, "Clear")
+        XCTAssertEqual(mainController.resultLabel.text, "olleH")
     }
-
+    // Checking the stats are changing correctly
+    func testReverseButtonTapped_emptyState() throws {
+        mainController.reverseButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(mainController.appState, .empty)
+    }
+    
+    func testReverseButtonTapped_inputState() throws {
+        mainController.appState = .input(text: "Hello World")
+        mainController.reverseButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(mainController.appState, .reversed(result: "olleH dlroW"))
+        XCTAssertEqual(mainController.resultLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines), "olleH dlroW")
+    }
+    
+    func testReverseButtonTapped_reversedState() throws {
+        mainController.appState = .reversed(result: "dlroW olleH")
+        mainController.reverseButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(mainController.appState, .empty)
+    }
+    // updated code for testing the correct copying of the result to the clipboard
+    func testCopyResultLabel() {
+        let resultText = "Reversed Text"
+        mainController.resultLabel.text = resultText
+        let pasteboard = UIPasteboard.general
+        mainController.copyResultLabel()
+        XCTAssertEqual(pasteboard.string, resultText)
+    }
+    
 }
