@@ -9,7 +9,7 @@ import UIKit
 
 final class MainController: UIViewController {
     //MARK: - Private UI Elements - deleted all PRIVATE
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Reverse words"
         label.font = UIFont.customFontBold(ofSize: 34)
@@ -17,7 +17,7 @@ final class MainController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    let subtitleLabel: UILabel = {
+    private let subtitleLabel: UILabel = {
         let subtitle = UILabel()
         subtitle.text = "This application will reverse your words.\nPlease type text below"
         subtitle.textColor = Colors.gray
@@ -26,7 +26,7 @@ final class MainController: UIViewController {
         subtitle.numberOfLines = 3
         return subtitle
     }()
-    let inputTextField: UITextField = {
+    private let inputTextField: UITextField = {
         let input = UITextField()
         input.borderStyle = .none
         input.font = UIFont.customFontRegular(ofSize: 17)
@@ -43,12 +43,12 @@ final class MainController: UIViewController {
         input.attributedPlaceholder = attributedPlaceholder
         return input
     }()
-    let lineView: UIView = {
+    private let lineView: UIView = {
         let line = UIView()
         line.backgroundColor = Colors.lightGray
         return line
     }()
-    let resultLabel: UILabel = {
+    public let resultLabel: UILabel = {
         let result = UILabel()
         result.textColor = Colors.systemBlue
         result.textAlignment = .left
@@ -57,7 +57,7 @@ final class MainController: UIViewController {
         result.accessibilityIdentifier = "resultLabel" // add id
         return result
     }()
-    let reverseButton: UIButton = {
+    public let reverseButton: UIButton = {
         let button = UIButton()
         button.setTitle("Reverse", for: .normal)
         button.setTitleColor(Colors.white, for: .normal)
@@ -69,9 +69,9 @@ final class MainController: UIViewController {
 
         return button
     }()
-    let reverseManager: ReverseManager? = ReverseManager()
-    var buttonBottomConstraint: Constraint?
-    var appState: AppState = .empty {
+    private let reverseManager: ReverseManager? = ReverseManager()
+    private var buttonBottomConstraint: Constraint?
+    public var appState: AppState = .empty {
         didSet {
             updateUI(for: appState)
         }
