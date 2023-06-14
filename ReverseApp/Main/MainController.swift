@@ -54,7 +54,6 @@ final class MainController: UIViewController {
         result.textAlignment = .left
         result.font = UIFont.customFontRegular(ofSize: 24)
         result.numberOfLines = 0
-        result.accessibilityIdentifier = "resultLabel" // add id
         return result
     }()
     public let reverseButton: UIButton = {
