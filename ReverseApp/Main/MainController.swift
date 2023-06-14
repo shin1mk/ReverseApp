@@ -8,7 +8,7 @@ import SnapKit
 import UIKit
 
 final class MainController: UIViewController {
-    //MARK: - Private UI Elements - deleted all PRIVATE
+    //MARK: - Private UI Elements
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Reverse words"
@@ -48,6 +48,58 @@ final class MainController: UIViewController {
         line.backgroundColor = Colors.lightGray
         return line
     }()
+    private let segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["Default", "Custom"])
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.black], for: .selected)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.black], for: .normal)
+        segmentedControl.selectedSegmentTintColor = Colors.systemBlue
+        segmentedControl.backgroundColor = Colors.lightSystemBlue
+        
+        return segmentedControl
+    }()
+    private let defaultInputTextField: UITextField = {
+        let input = UITextField()
+        input.borderStyle = .none
+        input.font = UIFont.customFontRegular(ofSize: 17)
+        input.textColor = Colors.gray
+        let placeholderFont = UIFont.customFontRegular(ofSize: 17)
+        let placeholderText = "All characters except alphabetic symbols"
+        let attributedPlaceholder = NSAttributedString(
+            string: placeholderText,
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                NSAttributedString.Key.font: placeholderFont as Any,
+                NSAttributedString.Key.paragraphStyle: {
+                    let style = NSMutableParagraphStyle()
+                    style.alignment = .center
+                    return style
+                }()
+            ]
+        )
+        input.attributedPlaceholder = attributedPlaceholder
+        return input
+    }()
+    private let customInputTextField: UITextField = {
+        let input = UITextField()
+        input.borderStyle = .none
+        input.font = UIFont.customFontRegular(ofSize: 17)
+        input.textColor = Colors.gray
+        let placeholderFont = UIFont.customFontRegular(ofSize: 17)
+        let placeholderText = "Text to ignore"
+        let attributedPlaceholder = NSAttributedString(
+            string: placeholderText,
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                NSAttributedString.Key.font: placeholderFont as Any
+            ]
+        )
+        input.attributedPlaceholder = attributedPlaceholder
+        input.isEnabled = false
+        return input
+    }()
+    private let reverseManager: ReverseManager? = ReverseManager()
+    private var buttonBottomConstraint: Constraint?
     public let resultLabel: UILabel = {
         let result = UILabel()
         result.textColor = Colors.systemBlue
@@ -65,11 +117,8 @@ final class MainController: UIViewController {
         button.isEnabled = false
         button.backgroundColor = Colors.lightSystemBlue
         button.accessibilityIdentifier = "ReverseButton"
-
         return button
     }()
-    private let reverseManager: ReverseManager? = ReverseManager()
-    private var buttonBottomConstraint: Constraint?
     public var appState: AppState = .empty {
         didSet {
             updateUI(for: appState)
@@ -89,13 +138,14 @@ final class MainController: UIViewController {
         setupKeyboardDismiss()
         addKeyboardObserver()
         setupResultLabelGesture()
+        segmentedControlTarget()
         setupButtonTarget()
         setupConstraints()
+        setupCustomInputTextField()
     }
     private func setupUI() {
         self.view.backgroundColor = Colors.white
     }
-    
     private func setupConstraints() {
         // title
         self.view.addSubview(titleLabel)
@@ -109,7 +159,7 @@ final class MainController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom).offset(Constants.spacing)
         }
-        // input
+        // input main
         self.view.addSubview(inputTextField)
         inputTextField.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(Constants.InputTextField.topOffset)
@@ -123,12 +173,32 @@ final class MainController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(Constants.horizontalInset)
             make.height.equalTo(Constants.Underline.height)
         }
+        // segmented control
+        self.view.addSubview(segmentedControl)
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom).offset(Constants.Segmented.topOffset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.horizontalInset)
+            make.height.equalTo(Constants.Segmented.height)
+        }
+        // default input
+        self.view.addSubview(defaultInputTextField)
+        defaultInputTextField.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom).offset(Constants.InputDefaultCustom.topOffset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.horizontalInset)
+            make.height.equalTo(Constants.InputDefaultCustom.height)
+        }
+        // custom input
+        self.view.addSubview(customInputTextField)
+        customInputTextField.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom).offset(Constants.InputDefaultCustom.topOffset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.horizontalInset)
+            make.height.equalTo(Constants.InputDefaultCustom.height)
+        }
         // result
         self.view.addSubview(resultLabel)
         resultLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.top.equalTo(defaultInputTextField.snp.bottom).offset(Constants.ResultLabel.topOffset)
             make.horizontalEdges.equalToSuperview().inset(Constants.horizontalInset)
-            make.top.equalTo(inputTextField.snp.bottom).offset(Constants.ResultLabel.topOffset)
         }
         // button
         self.view.addSubview(reverseButton)
@@ -173,7 +243,7 @@ final class MainController: UIViewController {
             applyReversedState(result: result)
         }
     }
-    
+    // Button
     private func setupButtonTarget() {
         reverseButton.addTarget(self, action: #selector(reverseButtonTapped), for: .touchUpInside)
     }
@@ -207,6 +277,29 @@ final class MainController: UIViewController {
     // Delegate
     func setupTextFieldDelegate() {
         inputTextField.delegate = self
+    }
+    
+    
+    //MARK: - segmented control
+    private func segmentedControlTarget() {
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+    }
+    
+    func setupCustomInputTextField() {
+        customInputTextField.isHidden = true
+    }
+    
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            defaultInputTextField.isHidden = false
+            customInputTextField.isHidden = true
+        case 1:
+            defaultInputTextField.isHidden = true
+            customInputTextField.isHidden = false
+        default:
+            break
+        }
     }
 }
 
@@ -277,12 +370,20 @@ extension MainController {
             static let topOffset = 40
             static let height = 40
         }
+        enum InputDefaultCustom {
+            static let topOffset = 10
+            static let height = 30
+        }
         enum Underline {
             static let topOffset = 10
             static let height = 1
         }
         enum ResultLabel {
-            static let topOffset = 25
+            static let topOffset = 10
+        }
+        enum Segmented {
+            static let topOffset = 13
+            static let height = 30
         }
         enum ReverseButton {
             static let bottomOffset = -5
@@ -297,21 +398,5 @@ extension MainController {
         static let lightGray = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.6)
         static let systemBlue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
         static let lightSystemBlue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-    }
-}
-
-
-extension MainController.AppState: Equatable {
-    static func ==(lhs: MainController.AppState, rhs: MainController.AppState) -> Bool {
-        switch (lhs, rhs) {
-        case (.empty, .empty):
-            return true
-        case let (.input(text1), .input(text2)):
-            return text1 == text2
-        case let (.reversed(result1), .reversed(result2)):
-            return result1 == result2
-        default:
-            return false
-        }
     }
 }
