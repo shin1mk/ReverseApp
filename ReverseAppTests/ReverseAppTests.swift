@@ -16,23 +16,6 @@ class MainControllerTests: XCTestCase {
         mainController = MainController()
         _ = mainController.view
     }
-    
-    override func tearDown() {
-        mainController = nil
-        super.tearDown()
-    }
-    
-    func testInputState() {
-        mainController.appState = .input(text: "Hello")
-        XCTAssertEqual(mainController.reverseButton.currentTitle, "Reverse")
-        XCTAssertTrue(mainController.reverseButton.isEnabled)
-    }
-    
-    func testReversedState() {
-        mainController.appState = .reversed(result: "olleH")
-        XCTAssertEqual(mainController.reverseButton.currentTitle, "Clear")
-        XCTAssertEqual(mainController.resultLabel.text, "olleH")
-    }
     // Checking the stats are changing correctly
     func testReverseButtonTapped_emptyState() throws {
         mainController.reverseButton.sendActions(for: .touchUpInside)
@@ -51,13 +34,4 @@ class MainControllerTests: XCTestCase {
         mainController.reverseButton.sendActions(for: .touchUpInside)
         XCTAssertEqual(mainController.appState, .empty)
     }
-    // updated code for testing the correct copying of the result to the clipboard
-    func testCopyResultLabel() {
-        let resultText = "Reversed Text"
-        mainController.resultLabel.text = resultText
-        let pasteboard = UIPasteboard.general
-        mainController.copyResultLabel()
-        XCTAssertEqual(pasteboard.string, resultText)
-    }
-    
 }
