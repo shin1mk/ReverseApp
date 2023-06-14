@@ -17,8 +17,8 @@
 		13035C6F2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C6E2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift */; };
 		13035C7F2A35BC60003A98BC /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */; };
 		13035C812A35BC80003A98BC /* ReverseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C802A35BC80003A98BC /* ReverseManager.swift */; };
+		13951D202A3A820F002A079B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13951D1F2A3A820F002A079B /* Main.storyboard */; };
 		13AE65182A3A627E007F275E /* AppState+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AE65172A3A627E007F275E /* AppState+Equatable.swift */; };
-		13AE651A2A3A7BCA007F275E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13AE65192A3A7BCA007F275E /* Main.storyboard */; };
 		13CA3DA12A35BF4D009CC053 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3D9F2A35BF4D009CC053 /* Roboto-Bold.ttf */; };
 		13CA3DA22A35BF4D009CC053 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3DA02A35BF4D009CC053 /* Roboto-Regular.ttf */; };
 		13CA3DA62A35BF63009CC053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3DA42A35BF63009CC053 /* LaunchScreen.storyboard */; };
@@ -59,8 +59,8 @@
 		13035C6E2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		13035C802A35BC80003A98BC /* ReverseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseManager.swift; sourceTree = "<group>"; };
+		13951D1F2A3A820F002A079B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		13AE65172A3A627E007F275E /* AppState+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+Equatable.swift"; sourceTree = "<group>"; };
-		13AE65192A3A7BCA007F275E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../Archive/ReverseApp/ReverseApp/Resources/Main.storyboard; sourceTree = "<group>"; };
 		13CA3D9F2A35BF4D009CC053 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		13CA3DA02A35BF4D009CC053 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		13CA3DA42A35BF63009CC053 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 		13035C832A35BCBD003A98BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				13AE65192A3A7BCA007F275E /* Main.storyboard */,
+				13951D1F2A3A820F002A079B /* Main.storyboard */,
 				13CA3DA42A35BF63009CC053 /* LaunchScreen.storyboard */,
 				13B4E1012A35BD78004D3399 /* Fonts */,
 				13035C512A35B5FC003A98BC /* ReverseApp.xcdatamodeld */,
@@ -343,7 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13CA3DA22A35BF4D009CC053 /* Roboto-Regular.ttf in Resources */,
-				13AE651A2A3A7BCA007F275E /* Main.storyboard in Resources */,
+				13951D202A3A820F002A079B /* Main.storyboard in Resources */,
 				13CA3DA12A35BF4D009CC053 /* Roboto-Bold.ttf in Resources */,
 				13035C552A35B5FD003A98BC /* Assets.xcassets in Resources */,
 				13CA3DA62A35BF63009CC053 /* LaunchScreen.storyboard in Resources */,
