@@ -17,6 +17,7 @@
 		13035C6F2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C6E2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift */; };
 		13035C7F2A35BC60003A98BC /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */; };
 		13035C812A35BC80003A98BC /* ReverseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13035C802A35BC80003A98BC /* ReverseManager.swift */; };
+		1331778E2A3CFB260056E138 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331778D2A3CFB260056E138 /* Constants.swift */; };
 		13951D202A3A820F002A079B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13951D1F2A3A820F002A079B /* Main.storyboard */; };
 		13AE65182A3A627E007F275E /* AppState+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AE65172A3A627E007F275E /* AppState+Equatable.swift */; };
 		13CA3DA12A35BF4D009CC053 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13CA3D9F2A35BF4D009CC053 /* Roboto-Bold.ttf */; };
@@ -59,6 +60,7 @@
 		13035C6E2A35B5FD003A98BC /* ReverseAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		13035C802A35BC80003A98BC /* ReverseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseManager.swift; sourceTree = "<group>"; };
+		1331778D2A3CFB260056E138 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		13951D1F2A3A820F002A079B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		13AE65172A3A627E007F275E /* AppState+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+Equatable.swift"; sourceTree = "<group>"; };
 		13CA3D9F2A35BF4D009CC053 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				13035C7E2A35BC60003A98BC /* UIFont+CustomFonts.swift */,
 				13AE65172A3A627E007F275E /* AppState+Equatable.swift */,
+				1331778D2A3CFB260056E138 /* Constants.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				13035C812A35BC80003A98BC /* ReverseManager.swift in Sources */,
 				13035C4B2A35B5FC003A98BC /* SceneDelegate.swift in Sources */,
 				13AE65182A3A627E007F275E /* AppState+Equatable.swift in Sources */,
+				1331778E2A3CFB260056E138 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

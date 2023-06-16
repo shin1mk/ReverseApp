@@ -55,7 +55,6 @@ final class MainController: UIViewController {
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.black], for: .normal)
         segmentedControl.selectedSegmentTintColor = Colors.systemBlue
         segmentedControl.backgroundColor = Colors.lightSystemBlue
-        
         return segmentedControl
     }()
     private let defaultInputTextField: UITextField = {
@@ -78,6 +77,7 @@ final class MainController: UIViewController {
             ]
         )
         input.attributedPlaceholder = attributedPlaceholder
+        input.isEnabled = false
         return input
     }()
     private let customInputTextField: UITextField = {
@@ -95,11 +95,13 @@ final class MainController: UIViewController {
             ]
         )
         input.attributedPlaceholder = attributedPlaceholder
-        input.isEnabled = false
+        input.isHidden = true
+        input.isEnabled = true
         return input
     }()
     private let reverseManager: ReverseManager? = ReverseManager()
     private var buttonBottomConstraint: Constraint?
+    
     public let resultLabel: UILabel = {
         let result = UILabel()
         result.textColor = Colors.systemBlue
@@ -141,11 +143,12 @@ final class MainController: UIViewController {
         segmentedControlTarget()
         setupButtonTarget()
         setupConstraints()
-        setupCustomInputTextField()
     }
+    
     private func setupUI() {
         self.view.backgroundColor = Colors.white
     }
+    
     private func setupConstraints() {
         // title
         self.view.addSubview(titleLabel)
@@ -217,6 +220,10 @@ final class MainController: UIViewController {
             reverseButton.backgroundColor = Colors.lightSystemBlue
             inputTextField.text = ""
             resultLabel.text = ""
+            customInputTextField.text = ""
+            segmentedControl.selectedSegmentIndex = 0
+            defaultInputTextField.isHidden = false
+            customInputTextField.isHidden = true
         }
         
         func applyInputState(hasEnteredText: Bool) {
@@ -253,13 +260,18 @@ final class MainController: UIViewController {
         case .empty:
             break
         case .input(let text):
-            let reversedText = reverseManager?.reverseText(text) ?? ""
+            let reversedText: String
+            if segmentedControl.selectedSegmentIndex == 1 {
+                let customTextToIgnore = customInputTextField.text ?? ""
+                reversedText = reverseManager?.reverseTextIgnoring(text, ignoring: customTextToIgnore) ?? ""
+            } else {
+                reversedText = reverseManager?.reverseText(text) ?? ""
+            }
             appState = .reversed(result: reversedText)
         case .reversed:
             appState = .empty
         }
     }
-    
     // Result
     private func setupResultLabelGesture() {
         let resultLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(copyResultLabel))
@@ -278,15 +290,9 @@ final class MainController: UIViewController {
     func setupTextFieldDelegate() {
         inputTextField.delegate = self
     }
-    
-    
-    //MARK: - segmented control
+//MARK: - segmented control
     private func segmentedControlTarget() {
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-    }
-    
-    func setupCustomInputTextField() {
-        customInputTextField.isHidden = true
     }
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -360,43 +366,4 @@ extension MainController: UITextFieldDelegate {
         return true
     }
 }
-//MARK: - Constants and Colors
-extension MainController {
-    enum Constants {
-        static let topOffset = 100
-        static let spacing = 16
-        static let horizontalInset = 16
-        enum InputTextField {
-            static let topOffset = 40
-            static let height = 40
-        }
-        enum InputDefaultCustom {
-            static let topOffset = 10
-            static let height = 30
-        }
-        enum Underline {
-            static let topOffset = 10
-            static let height = 1
-        }
-        enum ResultLabel {
-            static let topOffset = 10
-        }
-        enum Segmented {
-            static let topOffset = 13
-            static let height = 30
-        }
-        enum ReverseButton {
-            static let bottomOffset = -5
-            static let horizontalInset = 13
-            static let height = 66
-        }
-    }
-    enum Colors {
-        static let white = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
-        static let black = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
-        static let gray = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 1.0)
-        static let lightGray = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.6)
-        static let systemBlue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
-        static let lightSystemBlue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-    }
-}
+    
