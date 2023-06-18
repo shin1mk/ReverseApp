@@ -99,10 +99,7 @@ final class MainController: UIViewController {
         input.isEnabled = true
         return input
     }()
-    private let reverseManager: ReverseManager? = ReverseManager()
-    private var buttonBottomConstraint: Constraint?
-    
-    public let resultLabel: UILabel = {
+    private let resultLabel: UILabel = {
         let result = UILabel()
         result.textColor = Colors.systemBlue
         result.textAlignment = .left
@@ -110,7 +107,7 @@ final class MainController: UIViewController {
         result.numberOfLines = 0
         return result
     }()
-    public let reverseButton: UIButton = {
+    private let reverseButton: UIButton = {
         let button = UIButton()
         button.setTitle("Reverse", for: .normal)
         button.setTitleColor(Colors.white, for: .normal)
@@ -118,12 +115,19 @@ final class MainController: UIViewController {
         button.layer.cornerRadius = 10
         button.isEnabled = false
         button.backgroundColor = Colors.lightSystemBlue
-        button.accessibilityIdentifier = "ReverseButton"
+        //        button.accessibilityIdentifier = "ReverseButton"
         return button
     }()
-    public var appState: AppState = .empty {
+    private let reverseManager: ReverseManager? = ReverseManager()
+    private var buttonBottomConstraint: Constraint?
+    private var appState: AppState = .empty {
         didSet {
             updateUI(for: appState)
+        }
+    }
+    private var segmentedControlState: SegmentedControlState = .first {
+        didSet {
+            updateUI(for: segmentedControlState)
         }
     }
     
@@ -131,6 +135,10 @@ final class MainController: UIViewController {
         case empty
         case input(text: String)
         case reversed(result: String)
+    }
+    enum SegmentedControlState {
+        case first
+        case second(text: String)
     }
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -250,6 +258,18 @@ final class MainController: UIViewController {
             applyReversedState(result: result)
         }
     }
+    
+    func updateUI(for state: SegmentedControlState) {
+        switch state {
+        case .first:
+            defaultInputTextField.isHidden = false
+            customInputTextField.isHidden = true
+        case .second:
+            defaultInputTextField.isHidden = true
+            customInputTextField.isHidden = false
+        }
+    }
+    
     // Button
     private func setupButtonTarget() {
         reverseButton.addTarget(self, action: #selector(reverseButtonTapped), for: .touchUpInside)
@@ -290,7 +310,7 @@ final class MainController: UIViewController {
     func setupTextFieldDelegate() {
         inputTextField.delegate = self
     }
-//MARK: - segmented control
+    // Segmented control
     private func segmentedControlTarget() {
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
     }
@@ -298,17 +318,15 @@ final class MainController: UIViewController {
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            defaultInputTextField.isHidden = false
-            customInputTextField.isHidden = true
+            segmentedControlState = .first
         case 1:
-            defaultInputTextField.isHidden = true
-            customInputTextField.isHidden = false
+            let text = customInputTextField.text ?? ""
+            segmentedControlState = .second(text: text)
         default:
             break
         }
     }
 }
-
 //MARK: - Keyboard
 extension MainController {
     private func setupKeyboardDismiss() {
@@ -366,4 +384,4 @@ extension MainController: UITextFieldDelegate {
         return true
     }
 }
-    
+
