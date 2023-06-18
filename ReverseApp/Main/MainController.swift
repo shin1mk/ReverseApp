@@ -105,6 +105,7 @@ final class MainController: UIViewController {
         result.textAlignment = .left
         result.font = UIFont.customFontRegular(ofSize: 24)
         result.numberOfLines = 0
+        result.accessibilityIdentifier = "resultLabel"
         return result
     }()
     private let reverseButton: UIButton = {
@@ -115,7 +116,7 @@ final class MainController: UIViewController {
         button.layer.cornerRadius = 10
         button.isEnabled = false
         button.backgroundColor = Colors.lightSystemBlue
-        //        button.accessibilityIdentifier = "ReverseButton"
+        button.accessibilityIdentifier = "ReverseButton"
         return button
     }()
     private let reverseManager: ReverseManager? = ReverseManager()
