@@ -125,28 +125,9 @@ final class MainController: UIViewController {
             updateUI(for: appState, and: segmentedControlState)
         }
     }
-    private var segmentedControlState: SegmentedControlState = .first {
+    private var segmentedControlState: SegmentedControlState = .defaultRule {
         didSet {
             updateUI(for: appState, and: segmentedControlState)
-        }
-    }
-    
-    enum AppState {
-        case empty
-        case input(text: String)
-        case reversed(result: String)
-    }
-    enum SegmentedControlState {
-        case first
-        case second(text: String)
-        init?(index: Int, text: String?) {
-            if index == 0 {
-                self = .first
-            } else if index == 1, let text = text {
-                self = .second(text: text)
-            } else {
-                return nil
-            }
         }
     }
     //MARK: - Lifecycle
@@ -230,7 +211,7 @@ final class MainController: UIViewController {
         }
     }
     
-    func updateUI(for appState: AppState, and segmentedControlState: SegmentedControlState) {
+    private func updateUI(for appState: AppState, and segmentedControlState: SegmentedControlState) {
         func applyEmptyState() {
             reverseButton.setTitle("Reverse", for: .normal)
             reverseButton.isEnabled = false
@@ -268,10 +249,10 @@ final class MainController: UIViewController {
         }
         
         switch segmentedControlState {
-        case .first:
+        case .defaultRule:
             defaultInputTextField.isHidden = false
             customInputTextField.isHidden = true
-        case .second(let text):
+        case .customRule(let text):
             defaultInputTextField.isHidden = true
             customInputTextField.isHidden = false
             customInputTextField.text = text
@@ -283,7 +264,7 @@ final class MainController: UIViewController {
         reverseButton.addTarget(self, action: #selector(reverseButtonTapped), for: .touchUpInside)
     }
     
-    @objc func reverseButtonTapped(_ sender: UIButton) {
+    @objc private func reverseButtonTapped(_ sender: UIButton) {
         switch appState {
         case .empty:
             break
@@ -307,7 +288,7 @@ final class MainController: UIViewController {
         resultLabel.addGestureRecognizer(resultLabelTapGesture)
     }
     
-    @objc func copyResultLabel() {
+    @objc private func copyResultLabel() {
         guard let resultText = resultLabel.text else { return }
         UIPasteboard.general.string = resultText
         let alert = UIAlertController(title: "", message: "Скопировано", preferredStyle: .alert)
@@ -315,7 +296,7 @@ final class MainController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     // Delegate
-    func setupTextFieldDelegate() {
+    private func setupTextFieldDelegate() {
         inputTextField.delegate = self
     }
     // Segmented control
@@ -323,7 +304,7 @@ final class MainController: UIViewController {
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
     }
     
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         if let state = SegmentedControlState(index: sender.selectedSegmentIndex, text: customInputTextField.text) {
             segmentedControlState = state
         }
@@ -337,16 +318,16 @@ extension MainController {
         self.view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
-    func addKeyboardObserver() {
+    private func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
             let spacing: CGFloat = -10
@@ -358,7 +339,7 @@ extension MainController {
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         self.buttonBottomConstraint?.update(offset: -20)
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -386,4 +367,26 @@ extension MainController: UITextFieldDelegate {
         return true
     }
 }
-
+//MARK: - State
+extension MainController {
+    enum AppState {
+        case empty
+        case input(text: String)
+        case reversed(result: String)
+    }
+    
+    enum SegmentedControlState {
+        case defaultRule
+        case customRule(text: String)
+        
+        init?(index: Int, text: String?) {
+            if index == 0 {
+                self = .defaultRule
+            } else if index == 1, let text = text {
+                self = .customRule(text: text)
+            } else {
+                return nil
+            }
+        }
+    }
+}
