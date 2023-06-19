@@ -122,12 +122,12 @@ final class MainController: UIViewController {
     private var buttonBottomConstraint: Constraint?
     private var appState: AppState = .empty {
         didSet {
-            updateUI(for: appState)
+            updateUI(for: appState, and: segmentedControlState)
         }
     }
     private var segmentedControlState: SegmentedControlState = .first {
         didSet {
-            updateUI(for: segmentedControlState)
+            updateUI(for: appState, and: segmentedControlState)
         }
     }
     
@@ -139,6 +139,15 @@ final class MainController: UIViewController {
     enum SegmentedControlState {
         case first
         case second(text: String)
+        init?(index: Int, text: String?) {
+            if index == 0 {
+                self = .first
+            } else if index == 1, let text = text {
+                self = .second(text: text)
+            } else {
+                return nil
+            }
+        }
     }
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -221,7 +230,7 @@ final class MainController: UIViewController {
         }
     }
     
-    func updateUI(for appState: AppState) {
+    func updateUI(for appState: AppState, and segmentedControlState: SegmentedControlState) {
         func applyEmptyState() {
             reverseButton.setTitle("Reverse", for: .normal)
             reverseButton.isEnabled = false
@@ -257,16 +266,15 @@ final class MainController: UIViewController {
         case .reversed(let result):
             applyReversedState(result: result)
         }
-    }
-    
-    func updateUI(for state: SegmentedControlState) {
-        switch state {
+        
+        switch segmentedControlState {
         case .first:
             defaultInputTextField.isHidden = false
             customInputTextField.isHidden = true
-        case .second:
+        case .second(let text):
             defaultInputTextField.isHidden = true
             customInputTextField.isHidden = false
+            customInputTextField.text = text
         }
     }
     
@@ -316,14 +324,8 @@ final class MainController: UIViewController {
     }
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            segmentedControlState = .first
-        case 1:
-            let text = customInputTextField.text ?? ""
-            segmentedControlState = .second(text: text)
-        default:
-            break
+        if let state = SegmentedControlState(index: sender.selectedSegmentIndex, text: customInputTextField.text) {
+            segmentedControlState = state
         }
     }
 }
